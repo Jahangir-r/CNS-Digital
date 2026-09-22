@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="az">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CNS Digital</title>
+  <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="checklists.css" />
+  <link rel="stylesheet" href="checklist-admin.css" />
+  <link rel="stylesheet" href="shift-admin.css" />
+</head>
+<body>
+<div id="login-screen" class="login-wrap hidden">
+  <div class="login-visual" aria-hidden="true"></div>
+  <div class="login-panel">
+    <div class="login-card glass-card">
+      <img class="login-brand-logo" src="assets/azans-logo-blue.png" alt="Azeraeronavigation" />
+      <div class="eyebrow">AZERBAIJAN AIR NAVIGATION SERVICES</div>
+      <h1>CNS Digital</h1>
+      <p class="muted">Hesabınızla daxil olun</p>
+      <form id="login-form">
+        <label>Login<input type="text" id="login-username" autocomplete="username" required /></label>
+        <label>Parol<input type="password" id="login-password" autocomplete="current-password" required /></label>
+        <div id="login-error" class="error hidden"></div>
+        <button type="submit" class="btn btn-primary btn-block">Daxil ol</button>
+      </form>
+    </div>
+    <footer class="login-footer">© 2026 Jahangir Rajabli. All rights reserved.</footer>
+  </div>
+</div>
+
+<div id="app-screen" class="app hidden">
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <img src="assets/azans-logo-white.png" alt="Azeraeronavigation" />
+      
+    </div>
+    <strong class="mobile-nav-title" id="mobile-nav-title">CNS Digital</strong>
+    <button type="button" class="mobile-menu-trigger" id="mobile-menu-trigger" aria-label="Menyunu aç" aria-expanded="false">☰</button>
+    <nav class="tabs" id="nav-tabs" aria-label="Əsas menyu">
+      <button type="button" class="mobile-menu-close" id="mobile-menu-close" aria-label="Menyunu bağla">×</button>
+      <button class="tab active" data-tab="journal"><span class="nav-icon">▣</span><span>Jurnal</span></button>
+      <button class="tab perm hidden" data-perm="view_checklists" data-tab="checklists"><span class="nav-icon">☑</span><span>Yoxlama vərəqləri</span></button>
+      <button class="tab perm hidden" data-perm="manage_checklist_templates" data-tab="checklist-templates"><span class="nav-icon">▤</span><span>Yoxlama şablonları</span></button>
+      <button class="tab perm hidden" data-perm="manage_checklist_shifts" data-tab="checklist-shifts"><span class="nav-icon">◷</span><span>Növbə cədvəlləri</span></button>
+      <button class="tab perm hidden" data-perm="manage_users" data-tab="users"><span class="nav-icon">♙</span><span>İstifadəçilər</span></button>
+      <button class="tab perm hidden" data-perm="manage_roles" data-tab="roles"><span class="nav-icon">◇</span><span>Rollar</span></button>
+    </nav>
+    <div class="sidebar-rule"></div>
+    <div class="sidebar-caption">TƏHLÜKƏSİZ<br/>SƏMALAR ÜÇÜN<br/>BİRLİKDƏ</div>
+    <div class="sidebar-tower" aria-hidden="true"></div>
+  </aside>
+  <div class="mobile-menu-overlay" id="mobile-menu-overlay" hidden></div>
+
+  <div class="workspace">
+    <header class="hero-header">
+      <div class="hero-overlay"></div>
+      <div class="hero-copy">
+        <div class="eyebrow light">Xoş gəlmisiniz!</div>
+        <h1>CNS Digital</h1>
+        <p>Azerbaijan Air Navigation Services</p>
+      </div>
+      <div class="user-box">
+        <div class="avatar" id="user-avatar">U</div>
+        <div class="user-meta"><span id="user-name" class="user-name"></span><small>Sistem istifadəçisi</small></div>
+        <button class="btn btn-ghost btn-sm" id="btn-password">Parol</button>
+        <button class="btn btn-ghost btn-sm" id="btn-logout">Çıxış</button>
+      </div>
+      <div class="hero-tagline">Daha yüksək<br/>standartlara doğru</div><div class="hero-plane" aria-hidden="true">✈</div>
+    </header>
+
+    <main class="content">
+      <section id="tab-checklist-templates" class="tab-panel hidden"></section>
+      <section id="tab-checklist-shifts" class="tab-panel hidden"></section>
+      <section id="tab-journal" class="tab-panel">
+        <div class="stats perm hidden" data-perm="view_all_reports">
+          <div class="stat-card"><div class="stat-icon blue">▣</div><div><div class="stat-num" id="stat-total">0</div><div class="stat-label">Ümumi qeyd</div></div></div>
+          <div class="stat-card"><div class="stat-icon red">!</div><div><div class="stat-num accent-red" id="stat-open">0</div><div class="stat-label">Aktiv nasazlıq</div></div></div>
+          <div class="stat-card"><div class="stat-icon green">✓</div><div><div class="stat-num accent-green" id="stat-done">0</div><div class="stat-label">Bərpa edilib</div></div></div>
+          <div class="stat-card"><div class="stat-icon violet">◷</div><div><div class="stat-num" id="stat-month">0</div><div class="stat-label">Bu ay</div></div></div>
+        </div>
+
+        <div class="journal-card">
+          <div class="toolbar toolbar-actions">
+            <button class="btn btn-primary perm hidden" data-perm="create_reports" id="btn-new-report">+ Yeni qeyd</button>
+            <div class="toolbar-spacer"></div>
+            <button class="btn btn-export perm hidden" data-perm="export_import" id="btn-export">Export</button>
+            <button class="btn btn-success perm hidden" data-perm="export_import" id="btn-import">Excel yüklə</button>
+            <button class="btn btn-danger perm hidden" data-perm="delete_reports" id="btn-delete-all">Hamısını sil</button>
+            <input type="file" id="import-file" accept=".xlsx" class="hidden" />
+          </div>
+          <div class="filterbar">
+            <div class="search-wrap"><span class="search-icon">⌕</span><input type="search" id="filter-search" placeholder="Axtarış... (xidmət, obyekt, sistem, nasazlıq...)" /></div>
+            <select id="filter-xidmet">
+              <option value="">Bütün xidmətlər</option>
+              <option>HHAİS</option><option>CES</option><option>SUV(RLS)</option><option>Rabitə</option><option>Enerji</option><option>Digər</option>
+            </select>
+            <select id="filter-status"><option value="">Bütün statuslar</option><option value="open">Bərpa olunmayıb</option><option value="done">Bərpa olunub</option></select>
+          </div>
+          <div class="table-wrap journal-table-wrap">
+            <table id="reports-table">
+              <thead><tr>
+                <th>№</th><th>Xidmət</th><th>Obyekt</th><th>Sistem</th><th>Nasazlıq</th><th class="sortable" data-sort="nasazliq_vaxti" aria-sort="none"><button type="button" class="sort-btn">Nasazlıq vaxtı <span class="sort-icon">↕</span></button></th><th>Vaciblik</th><th>Səbəb</th><th>Tədbir</th><th class="sortable" data-sort="berpa_vaxti" aria-sort="none"><button type="button" class="sort-btn">Bərpa <span class="sort-icon">↕</span></button></th><th>Müraciət</th><th>Cavabdeh</th><th>Daxil etdi</th><th class="actions-col">Əməliyyatlar</th>
+              </tr></thead><tbody></tbody>
+            </table>
+            <div id="journal-mobile-list" class="journal-mobile-list" aria-label="Jurnal qeydləri"></div>
+            <div id="empty-journal" class="empty hidden">Jurnalda qeyd yoxdur</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="tab-checklists" class="tab-panel hidden" aria-label="Yoxlama vərəqləri"></section>
+      <section id="tab-users" class="tab-panel hidden">
+        <div class="panel-page">
+          <div class="section-head"><div><div class="section-kicker">ACCESS CONTROL</div><h2>İstifadəçilər</h2><p class="muted">Hesabları və giriş hüquqlarını idarə edin</p></div><button class="btn btn-primary" id="btn-new-user">+ Yeni istifadəçi</button></div>
+          <div class="table-wrap users-desktop-wrap"><table id="users-table"><thead><tr><th>№</th><th>Ad, soyad</th><th>Login</th><th>Rol</th><th>Status</th><th>Əməliyyat</th></tr></thead><tbody></tbody></table></div>
+          <div id="users-mobile-list" class="users-mobile-list" aria-label="İstifadəçilər"></div>
+        </div>
+      </section>
+
+      <section id="tab-roles" class="tab-panel hidden">
+        <div class="panel-page">
+          <div class="section-head"><div><div class="section-kicker">ROLE MANAGEMENT</div><h2>Rollar</h2><p class="muted">Rolları yaradın, adını dəyişin və hüquqları idarə edin</p></div><button class="btn btn-primary" id="btn-new-role">+ Yeni rol</button></div>
+          <div class="table-wrap"><table id="roles-table"><thead><tr><th>Rol</th><th>Jurnala baxış</th><th>Əlavə et</th><th>Redaktə</th><th>Sil</th><th>Excel</th><th>İstifadəçilər</th><th>Növbə müh.</th><th>Parol</th><th>Yoxlama hüquqları</th><th>Əməliyyat</th></tr></thead><tbody></tbody></table></div>
+        </div>
+      </section>
+    </main>
+    <button type="button" id="journal-back-to-top" class="journal-back-to-top hidden" aria-label="Yuxarı qayıt">↑</button>
+    <footer class="app-footer"><strong>AZƏRAERONAVİQASİYA</strong><span>CNS Digital</span><span>© 2026 Jahangir Rajabli. All rights reserved.</span></footer>
+  </div>
+</div>
+
+
+<div id="report-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop" data-close-report-modal></div>
+  <div class="modal-card report-modal-card">
+    <button class="modal-x" type="button" data-close-report-modal>×</button>
+    
+          <div class="section-kicker">CNS DIGITAL</div>
+          <h2 id="form-title">Yeni nasazlıq qeydi</h2>
+          <form id="report-form">
+            <input type="hidden" id="f-id" />
+            <div class="grid-2">
+              <label>Xidmət *
+                <select id="f-xidmet" required><option value="">Seçin...</option><option>HHAİS</option><option>CES</option><option>SUV(RLS)</option><option>Rabitə</option><option>Enerji</option><option>Digər</option></select>
+              </label>
+              <label>Obyekt / yer
+                <select id="f-obyekt"><option value="">Seçin...</option><option>Bakı</option><option>Zabrat</option><option>Yevlax</option><option>Lənkəran</option><option>Qəbələ</option><option>Zaqatala</option><option>Gəncə</option><option>Füzuli</option><option>Zəngilan</option><option>Laçın</option><option>Naxçıvan</option></select>
+              </label>
+            </div>
+            <label>Sistem, avadanlıq *<input type="text" id="f-sistem" required /></label>
+            <label>Nasazlıq barədə məlumat *<textarea id="f-nasazliq" rows="3" required></textarea></label>
+            <div class="grid-2"><label>Nasazlıq tarixi və saatı *<input type="datetime-local" id="f-nasazliq-vaxti" required /></label><label>Bərpa tarixi və saatı<input type="datetime-local" id="f-berpa-vaxti" /></label></div>
+            <label>Vaciblik<select id="f-prioritet"><option value="asagi">Aşağı</option><option value="orta" selected>Orta</option><option value="yuksek">Yüksək</option></select></label>
+            <label>Səbəb<textarea id="f-sebeb" rows="2"></textarea></label>
+            <label>Tədbir<textarea id="f-tedbir" rows="2"></textarea></label>
+            <div class="grid-2"><label>Müraciət edilən şəxs<input id="f-muraciet" /></label><label>Cavabdeh<input id="f-cavabdeh" /></label></div>
+            <div id="form-error" class="error hidden"></div>
+            <div class="form-actions"><button type="submit" class="btn btn-primary">Yadda saxla</button><button type="button" class="btn btn-ghost hidden" id="btn-cancel-edit">Ləğv et</button></div>
+          </form>
+        
+  </div>
+</div>
+
+<div id="restore-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop" data-close-restore-modal></div>
+  <div class="modal-card restore-modal-card">
+    <button class="modal-x" type="button" data-close-restore-modal>×</button>
+    <div class="section-kicker">BƏRPA TƏSDİQİ</div>
+    <h2>Bərpa haqqında məlumat</h2>
+    <p class="muted restore-help">Seçilmiş bərpa vaxtı: <strong id="restore-date-preview"></strong></p>
+    <form id="restore-form">
+      <label>Görülən tədbir *
+        <textarea id="restore-description" rows="5" required placeholder="Nasazlığın aradan qaldırılması üçün görülən tədbiri yazın..."></textarea>
+      </label>
+      <div id="restore-error" class="error hidden"></div>
+      <div class="form-actions">
+        <button type="button" class="btn btn-ghost" data-close-restore-modal>Ləğv et</button>
+        <button type="submit" class="btn btn-primary">Bərpanı təsdiqlə</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div id="user-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop" data-close-user-modal></div>
+  <div class="modal-card"><button class="modal-x" type="button" data-close-user-modal>×</button><div class="section-kicker" id="user-modal-kicker">NEW ACCOUNT</div><h2 id="user-modal-title">Yeni istifadəçi</h2>
+    <form id="user-form"><input type="hidden" id="u-id" /><label>Ad, soyad<input type="text" id="u-name" required /></label><label>Login<input type="text" id="u-username" required /></label><label id="u-password-label">Parol<input type="password" id="u-password" minlength="6" /></label><label>Rol<select id="u-role"></select></label><div id="user-error" class="error hidden"></div><div class="form-actions"><button type="button" class="btn btn-ghost" data-close-user-modal>Ləğv et</button><button type="submit" class="btn btn-primary" id="user-submit-btn">Yarat</button></div></form>
+  </div>
+</div>
+
+<div id="checklist-role-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop" data-close-checklist-role></div>
+  <div class="modal-card checklist-role-modal-card" role="dialog" aria-modal="true" aria-labelledby="checklist-role-title" aria-describedby="checklist-role-name">
+    <button type="button" class="modal-x" data-close-checklist-role aria-label="Bağla">×</button>
+    <h2 id="checklist-role-title">Yoxlama hüquqları</h2>
+    <p id="checklist-role-name" class="muted"></p>
+    <div id="checklist-role-options"></div>
+    <div class="form-actions"><button type="button" class="btn btn-ghost" data-close-checklist-role>Ləğv et</button><button type="button" class="btn btn-primary" id="apply-checklist-role">Tətbiq et</button></div>
+  </div>
+</div>
+
+<div id="role-modal" class="modal hidden" aria-hidden="true">
+  <div class="modal-backdrop" data-close-role-modal></div>
+  <div class="modal-card role-modal-card"><button class="modal-x" type="button" data-close-role-modal>×</button><div class="section-kicker">ROLE MANAGEMENT</div><h2 id="role-modal-title">Yeni rol</h2>
+    <form id="role-form"><input type="hidden" id="role-name" /><label>Rolun adı<input type="text" id="role-label" required maxlength="60" /></label><div class="permission-grid" id="role-permission-grid">
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="view_all_reports" /> Jurnala baxış</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="create_reports" /> Əlavə et</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="edit_reports" /> Redaktə</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="delete_reports" /> Sil</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="export_import" /> Excel</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="manage_users" /> İstifadəçilər</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="shift_engineer_access" /> Növbə mühəndisi rejimi</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="view_checklists" /> Yoxlamalara baxış</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="create_checklists" /> Yoxlama yaratmaq</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="edit_own_checklists" /> Öz yoxlamasını redaktə etmək</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="manage_checklists" /> Yoxlamaları idarə etmək</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="manage_checklist_templates" /> Şablonları idarə etmək</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="manage_checklist_shifts" /> Növbə cədvəllərini idarə etmək</label>
+      <label class="permission-check"><input type="checkbox" data-role-form-perm="create_reports_from_checklist" /> Yoxlamadan nasazlıq yaratmaq</label>
+    </div><div id="role-error" class="error hidden"></div><div class="form-actions"><button type="button" class="btn btn-ghost" data-close-role-modal>Ləğv et</button><button type="submit" class="btn btn-primary">Yadda saxla</button></div></form>
+  </div>
+</div>
+
+<div id="toast" class="toast hidden"></div>
+<script src="app.js"></script>
+<script type="module" src="checklists.js"></script>
+<script type="module" src="checklist-admin.js"></script>
+<script type="module" src="shift-admin.js"></script>
+</body>
+</html>

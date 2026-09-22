@@ -1,0 +1,28 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import Database from 'better-sqlite3';
+import ExcelJS from 'exceljs';
+import fs from 'node:fs';import os from 'node:os';import path from 'node:path';
+import {migrateChecklistDatabase} from '../src/checklists/migrations.js';
+import {createTemplateService} from '../src/checklists/templates.js';
+import {createShiftService} from '../src/checklists/shifts.js';
+import {createRunService} from '../src/checklists/runs.js';
+import {productionShiftDraft} from '../src/checklists/production-shift.js';
+import {templateFixture} from './fixtures/checklist-template.js';
+import {templateWorkbook} from '../src/checklists/template-excel.js';
+import {readChecklistSnapshot,buildChecklistWorkbook} from '../src/checklists/backup-excel.js';
+const owner=(id:number,name:string,manage=false)=>({id,username:`u${id}`,full_name:name,view_checklists:true,create_checklists:true,edit_own_checklists:true,manage_checklists:manage});
+function environment(t:any){const db=new Database(':memory:');db.pragma('foreign_keys=ON');migrateChecklistDatabase(db);t.after(()=>db.close());let instant=new Date('2026-09-20T17:00:00.000Z');const now=()=>instant;
+ const templates=createTemplateService(db);let v=templates.create({code:'DAILY',name:'Daily'},1);const structure=structuredClone(templateFixture);structure.sections[0].items[0].technology_card='S1,H1,İ1';v=templates.update(v.id,{...structure,revision:v.revision});v=templates.publish(v.id,v.revision,1);
+ const shifts=createShiftService(db,now),draft=shifts.create(productionShiftDraft('2026-09-20T16:00:00.000Z'),1);shifts.publish(draft.id,draft.revision,1);
+ return{db,now,set:(v:string)=>instant=new Date(v),templates,shifts,runs:createRunService(db,now),v};}
+test('technology card survives clone, edit, immutable publish, run snapshot, both Excel exports and SQLite restore',async t=>{const e=environment(t),a=owner(1,'A');
+ const first=e.runs.create(a,{}).run,section=e.runs.section(first.id,(first.sections[0] as any).id,a) as any;assert.equal(section.items[0].technology_card_snapshot,'S1,H1,İ1');
+ let clone=e.templates.clone(e.v.id,1);assert.equal(clone.sections[0].items[0].technology_card,'S1,H1,İ1');const structure=structuredClone(clone);structure.sections[0].items[0].technology_card='H1,İ1';clone=e.templates.update(clone.id,{...structure,revision:clone.revision});clone=e.templates.publish(clone.id,clone.revision,1);assert.throws(()=>e.templates.update(clone.id,{...structure,revision:clone.revision}));
+ assert.equal((e.runs.section(first.id,(first.sections[0] as any).id,a) as any).items[0].technology_card_snapshot,'S1,H1,İ1');
+ const tw=new ExcelJS.Workbook();await tw.xlsx.load(await templateWorkbook(clone).xlsx.writeBuffer());assert.equal(tw.creator,'CNS Digital');assert.match(tw.title,/CNS Digital/);assert.equal(tw.getWorksheet('Şablon strukturu')!.getRow(1).getCell(6).value,'Texnoloji kart');assert.equal(tw.getWorksheet('Şablon strukturu')!.getRow(2).getCell(6).value,'H1,İ1');
+ const snap=readChecklistSnapshot(e.db),book=buildChecklistWorkbook(snap,{at:e.now(),source:'memory',databaseFile:'copy.db',excelFile:'copy.xlsx'});assert.equal(book.creator,'CNS Digital');assert.equal(book.title,'CNS Digital — Checklist backup');const items=book.getWorksheet('Yoxlama bəndləri')!;assert.equal(items.getRow(1).getCell(4).value,'Texnoloji kart');assert.equal(items.getRow(2).getCell(4).value,'S1,H1,İ1');
+ const dir=fs.mkdtempSync(path.join(os.tmpdir(),'cns-tk-'));t.after(()=>fs.rmSync(dir,{recursive:true,force:true}));const file=path.join(dir,'restore.db');await e.db.backup(file);const restored=new Database(file,{readonly:true});try{assert.equal(restored.pragma('quick_check',{simple:true}),'ok');assert.equal((restored.prepare('SELECT technology_card FROM checklist_items WHERE id=?').get(clone.sections[0].items[0].id) as any).technology_card,'H1,İ1');assert.equal((restored.prepare('SELECT technology_card_snapshot FROM checklist_run_items WHERE id=?').get(section.items[0].id) as any).technology_card_snapshot,'S1,H1,İ1');}finally{restored.close();}
+});
+test('one active normal checklist per Asia/Baku day, extra bypass and soft delete releases slot',t=>{const e=environment(t),a=owner(1,'A'),b=owner(2,'B'),admin=owner(9,'Admin',true);const first=e.runs.create(a,{});assert.equal(first.outcome,'created');const second=e.runs.create(b,{});assert.equal(second.outcome,'existing');assert.equal(second.run.id,first.run.id);const extra=e.runs.create(admin,{is_extra:true,override_reason:'Test'});assert.equal(extra.outcome,'created');e.runs.remove(first.run.id,admin,'Replace daily run');const replacement=e.runs.create(b,{});assert.equal(replacement.outcome,'created');assert.notEqual(replacement.run.id,first.run.id);assert.ok(e.runs.get(first.run.id,admin).deleted_at);assert.equal((e.db.prepare('SELECT COUNT(*) n FROM checklist_runs WHERE checklist_day=? AND is_extra=0 AND deleted_at IS NULL').get('2026-09-20') as any).n,1);});
+test('production cycle resolves every confirmed timestamp and exact boundaries without gaps',t=>{const e=environment(t);const cases=[['2026-09-20T17:00:00Z','Növbə 1'],['2026-09-20T23:00:00Z','Növbə 1'],['2026-09-21T04:00:00Z','Növbə 2'],['2026-09-21T04:30:00Z','Növbə 2'],['2026-09-21T15:59:00Z','Növbə 2'],['2026-09-21T16:00:00Z','Növbə 3'],['2026-09-21T16:30:00Z','Növbə 3'],['2026-09-22T03:59:00Z','Növbə 3'],['2026-09-22T04:00:00Z','Növbə 4'],['2026-09-22T04:30:00Z','Növbə 4'],['2026-09-22T16:00:00Z','Növbə 1'],['2026-09-22T16:30:00Z','Növbə 1']] as const;for(const [at,label] of cases)assert.equal(e.shifts.current(new Date(at)).label_snapshot,label,at);});

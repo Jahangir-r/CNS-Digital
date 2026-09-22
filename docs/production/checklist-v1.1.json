@@ -1,0 +1,2146 @@
+{
+  "code": "CNS_DAILY_TECHNICAL_CHECK",
+  "name": "Gündəlik texniki yoxlama",
+  "version": "1.1",
+  "status": "draft",
+  "structure": {
+    "name_snapshot": "Gündəlik texniki yoxlama",
+    "sections": [
+      {
+        "stable_key": "OPERATIONS_HALL",
+        "name": "HHİE əməliyyat zalı üzrə yoxlama",
+        "sort_order": 0,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "HALL_LIGHTING",
+            "name": "Zalın işıqlanması",
+            "equipment_name": "Zalın işıqlanması",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "-"
+          },
+          {
+            "stable_key": "TEMPERATURE_HUMIDITY",
+            "name": "Temperatur və nisbi rütubət",
+            "equipment_name": "Temperatur və nisbi rütubət",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "FIRE_EXTINGUISHER_4",
+            "name": "Yanğınsöndürən balon -4",
+            "equipment_name": "Yanğınsöndürən balon -4",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1,H1"
+          },
+          {
+            "stable_key": "FIRE_EXTINGUISHER_5",
+            "name": "Yanğınsöndürən balon -5",
+            "equipment_name": "Yanğınsöndürən balon -5",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1,H1"
+          },
+          {
+            "stable_key": "EGL_INSPECTION",
+            "name": "EGL- nə ümumi baxış",
+            "equipment_name": "EGL- nə ümumi baxış",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "NEC_MONITOR",
+            "name": "NEC monitor",
+            "equipment_name": "NEC monitor",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "SUP_APP",
+        "name": "SUP APP konsolu",
+        "sort_order": 1,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_CMD_FDD_SDD",
+            "name": "Aircon CMD/FDD/SDD",
+            "equipment_name": "Aircon CMD/FDD/SDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS",
+            "name": "VCS",
+            "equipment_name": "VCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "IP_EMG_PHONES",
+            "name": "IP və EMG telefonlar",
+            "equipment_name": "IP və EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "SUP_ACC",
+        "name": "SUP ACC konsolu",
+        "sort_order": 2,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_CMD_FDD_SDD",
+            "name": "Aircon CMD/FDD/SDD",
+            "equipment_name": "Aircon CMD/FDD/SDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_POS_TMCS",
+            "name": "VCS-POS və TMCS",
+            "equipment_name": "VCS-POS və TMCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "IP_EMG_PHONES",
+            "name": "IP və EMG telefonlar",
+            "equipment_name": "IP və EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "FIS_SAR",
+        "name": "FİS/SAR konsolu",
+        "sort_order": 3,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS",
+            "name": "VCS",
+            "equipment_name": "VCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONES",
+            "name": "EMG telefonlar",
+            "equipment_name": "EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_RADIO_DEVICE",
+            "name": "EMG radio rabitə vasitəsi",
+            "equipment_name": "EMG radio rabitə vasitəsi",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "BACKGROUND_MICROPHONE",
+            "name": "fon mikrofonu",
+            "equipment_name": "fon mikrofonu",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "FDO",
+        "name": "FDO konsolu",
+        "sort_order": 4,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_FDD",
+            "name": "Aircon FDD",
+            "equipment_name": "Aircon FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS",
+            "name": "VCS",
+            "equipment_name": "VCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONES",
+            "name": "EMG telefonlar",
+            "equipment_name": "EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "AIRCON_PRINTER",
+            "name": "Aircon printer",
+            "equipment_name": "Aircon printer",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1,H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "FSD",
+        "name": "FSD konsolu",
+        "sort_order": 5,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "MONITORS",
+            "name": "Monitorlar",
+            "equipment_name": "Monitorlar",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "VCS",
+            "name": "VCS",
+            "equipment_name": "VCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONES",
+            "name": "EMG telefonlar",
+            "equipment_name": "EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "BACKGROUND_RECORDING_MICROPHONE",
+            "name": "fonun yazılma mikrofonu",
+            "equipment_name": "fonun yazılma mikrofonu",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "MIL",
+        "name": "MIL konsolu",
+        "sort_order": 6,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS",
+            "name": "VCS",
+            "equipment_name": "VCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONES",
+            "name": "EMG telefonlar",
+            "equipment_name": "EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "BACKGROUND_MICROPHONE",
+            "name": "fon mikrofonu",
+            "equipment_name": "fon mikrofonu",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "INTERNET_COMPUTER",
+            "name": "İnternet kompüteri",
+            "equipment_name": "İnternet kompüteri",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS1_DEP_EXE",
+        "name": "UCS1 (DEP) EXE konsolu",
+        "sort_order": 7,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS1",
+            "name": "VCS - UCS1",
+            "equipment_name": "VCS - UCS1",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS1_DEP_PL",
+        "name": "UCS1 (DEP) PL konsolu",
+        "sort_order": 8,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS1",
+            "name": "VCS - UCS1",
+            "equipment_name": "VCS - UCS1",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "MULTICOM_ZABRAT",
+            "name": "Multicom “Zabrat”",
+            "equipment_name": "Multicom “Zabrat”",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS2_ARR_EXE",
+        "name": "UCS2 (ARR) EXE konsolu",
+        "sort_order": 9,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "PHOENIX",
+            "name": "Phoenix",
+            "equipment_name": "Phoenix",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS2",
+            "name": "VCS - UCS2",
+            "equipment_name": "VCS - UCS2",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_PHONES",
+            "name": "EMG telefonlar",
+            "equipment_name": "EMG telefonlar",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS2_ARR_PL",
+        "name": "UCS2 (ARR) PL konsolu",
+        "sort_order": 10,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "A_SMGCS",
+            "name": "A-SMGCS",
+            "equipment_name": "A-SMGCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS2",
+            "name": "VCS - UCS2",
+            "equipment_name": "VCS - UCS2",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS3_EAST_LOW_EXE",
+        "name": "UCS3 (East Low) EXE konsolu",
+        "sort_order": 11,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS3",
+            "name": "VCS - UCS3",
+            "equipment_name": "VCS - UCS3",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS3_EAST_LOW_PL",
+        "name": "UCS3 (East Low) PL konsolu",
+        "sort_order": 12,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS3",
+            "name": "VCS - UCS3",
+            "equipment_name": "VCS - UCS3",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS4_EAST_UP_EXE",
+        "name": "UCS4 (East Up) EXE konsolu",
+        "sort_order": 13,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS4",
+            "name": "VCS - UCS4",
+            "equipment_name": "VCS - UCS4",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS4_EAST_UP_PL",
+        "name": "UCS4 (East Up) PL konsolu",
+        "sort_order": 14,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS4",
+            "name": "VCS - UCS4",
+            "equipment_name": "VCS - UCS4",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS5_WEST_LOW_EXE",
+        "name": "UCS5 (West Low) EXE konsolu",
+        "sort_order": 15,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "PHOENIX",
+            "name": "Phoenix",
+            "equipment_name": "Phoenix",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS5",
+            "name": "VCS - UCS5",
+            "equipment_name": "VCS - UCS5",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS5_WEST_LOW_PL",
+        "name": "UCS5 (West Low) PL konsolu",
+        "sort_order": 16,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS5",
+            "name": "VCS - UCS5",
+            "equipment_name": "VCS - UCS5",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS6_WEST_UP_EXE",
+        "name": "UCS6 (West UP) EXE konsolu",
+        "sort_order": 17,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS6",
+            "name": "VCS - UCS6",
+            "equipment_name": "VCS - UCS6",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CARE",
+            "name": "Care",
+            "equipment_name": "Care",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS6_WEST_UP_PL",
+        "name": "UCS6 (West Up) PL konsolu",
+        "sort_order": 18,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS6",
+            "name": "VCS - UCS6",
+            "equipment_name": "VCS - UCS6",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS7_SOUTH_EXE",
+        "name": "UCS7 (South) EXE konsolu",
+        "sort_order": 19,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS7",
+            "name": "VCS - UCS7",
+            "equipment_name": "VCS - UCS7",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS7_SOUTH_PL",
+        "name": "UCS7 (South) PL konsolu",
+        "sort_order": 20,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS7",
+            "name": "VCS - UCS7",
+            "equipment_name": "VCS - UCS7",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS8_MIL_EXE",
+        "name": "UCS8 (MIL) EXE konsolu",
+        "sort_order": 21,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS8",
+            "name": "VCS - UCS8",
+            "equipment_name": "VCS - UCS8",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "UCS8_BACKUP_PL",
+        "name": "UCS8 (BackUp) PL konsolu",
+        "sort_order": 22,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_SDD_FDD",
+            "name": "Aircon SDD/FDD",
+            "equipment_name": "Aircon SDD/FDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_UCS8",
+            "name": "VCS - UCS8",
+            "equipment_name": "VCS - UCS8",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "SELVA",
+            "name": "SELVA",
+            "equipment_name": "SELVA",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "TOWER_OPERATIONS_HALL",
+        "name": "Qüllə əməliyyat zalı üzrə yoxlama",
+        "sort_order": 23,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "HALL_LIGHTING",
+            "name": "Zalın işıqlanması",
+            "equipment_name": "Zalın işıqlanması",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "-"
+          },
+          {
+            "stable_key": "TEMPERATURE_HUMIDITY",
+            "name": "Temperatur və nisbi rütubət",
+            "equipment_name": "Temperatur və nisbi rütubət",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "FIRE_EXTINGUISHER_7",
+            "name": "Yanğınsöndürən balon -7",
+            "equipment_name": "Yanğınsöndürən balon -7",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "FIRE_EXTINGUISHER_STAIRS",
+            "name": "Yanğınsöndürən balon (pilləkən)",
+            "equipment_name": "Yanğınsöndürən balon (pilləkən)",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "EGL_INSPECTION",
+            "name": "EGL- nə ümumi baxış",
+            "equipment_name": "EGL- nə ümumi baxış",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "ELECTRIC_BLINDS",
+            "name": "Elektron jaluz",
+            "equipment_name": "Elektron jaluz",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "GPS_CLOCK",
+            "name": "GPS saat",
+            "equipment_name": "GPS saat",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "UEZ_MONITOR_TWR1",
+            "name": "Monitor UEZ indikator TWR1",
+            "equipment_name": "Monitor UEZ indikator TWR1",
+            "sort_order": 7,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "UEZ_MONITOR_TWR2",
+            "name": "Monitor UEZ indikator TWR2",
+            "equipment_name": "Monitor UEZ indikator TWR2",
+            "sort_order": 8,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          }
+        ]
+      },
+      {
+        "stable_key": "SUP_TWR",
+        "name": "SUP TWR konsolu",
+        "sort_order": 24,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_FDD_SDD",
+            "name": "Aircon /FDD/SDD",
+            "equipment_name": "Aircon /FDD/SDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_POS",
+            "name": "VCS-POS",
+            "equipment_name": "VCS-POS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "IP_EMG_PHONES",
+            "name": "IP və EMG telefonlar",
+            "equipment_name": "IP və EMG telefonlar",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "APRON_PC",
+            "name": "Apron PC",
+            "equipment_name": "Apron PC",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "MONOBLOCK_PC",
+            "name": "Monoblok PC",
+            "equipment_name": "Monoblok PC",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "TEAS",
+            "name": "TEAS",
+            "equipment_name": "TEAS",
+            "sort_order": 7,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 8,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "PROJECTOR",
+            "name": "projektor",
+            "equipment_name": "projektor",
+            "sort_order": 9,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "TWR1",
+        "name": "TWR1 konsolu",
+        "sort_order": 25,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_FDD_SDD",
+            "name": "Aircon FDD/SDD",
+            "equipment_name": "Aircon FDD/SDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_POS",
+            "name": "VCS-POS",
+            "equipment_name": "VCS-POS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "MOTOROLLA",
+            "name": "motorolla",
+            "equipment_name": "motorolla",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "GND1",
+        "name": "GND1 konsolu",
+        "sort_order": 26,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_FDD_SDD",
+            "name": "Aircon FDD/SDD",
+            "equipment_name": "Aircon FDD/SDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_POS",
+            "name": "VCS-POS",
+            "equipment_name": "VCS-POS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_RADIO",
+            "name": "EMG radiorabitə",
+            "equipment_name": "EMG radiorabitə",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "A_SMGCS",
+            "name": "A-SMGCS",
+            "equipment_name": "A-SMGCS",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "APRON",
+            "name": "APRON",
+            "equipment_name": "APRON",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "MOTOROLLA",
+            "name": "motorolla",
+            "equipment_name": "motorolla",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "ATC_GV_CAMERA",
+            "name": "ATC-GV kamera",
+            "equipment_name": "ATC-GV kamera",
+            "sort_order": 7,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 8,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 9,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "GND2",
+        "name": "GND2 konsolu",
+        "sort_order": 27,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "ATC_GV_CAMERA",
+            "name": "ATC-GV kamera",
+            "equipment_name": "ATC-GV kamera",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_POS",
+            "name": "VCS-POS",
+            "equipment_name": "VCS-POS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "APRON",
+            "name": "APRON",
+            "equipment_name": "APRON",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "MOTOROLLA",
+            "name": "motorolla",
+            "equipment_name": "motorolla",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "TWR2",
+        "name": "TWR2 konsolu",
+        "sort_order": 28,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "AIRCON_FDD_SDD",
+            "name": "Aircon FDD/SDD",
+            "equipment_name": "Aircon FDD/SDD",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "A_SMGCS",
+            "name": "A-SMGCS",
+            "equipment_name": "A-SMGCS",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "VCS_POS",
+            "name": "VCS-POS",
+            "equipment_name": "VCS-POS",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "EMG_PHONE",
+            "name": "EMG telefon",
+            "equipment_name": "EMG telefon",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "EMG_RADIO_TR810",
+            "name": "EMG radiorabitə TR810",
+            "equipment_name": "EMG radiorabitə TR810",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "EMG_RADIO_ICOM",
+            "name": "eMG radio-dinləmə İCOM",
+            "equipment_name": "eMG radio-dinləmə İCOM",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "MOTOROLLA",
+            "name": "motorolla",
+            "equipment_name": "motorolla",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "UEZ_INDICATOR_PC",
+            "name": "UEZ indikator PC",
+            "equipment_name": "UEZ indikator PC",
+            "sort_order": 7,
+            "required": true,
+            "active": true,
+            "technology_card": "S1,H1,İ1"
+          },
+          {
+            "stable_key": "CONSOLE_TEMPERATURE",
+            "name": "konsol daxilində temperatur",
+            "equipment_name": "konsol daxilində temperatur",
+            "sort_order": 8,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "COOLERS",
+            "name": "kulerlər",
+            "equipment_name": "kulerlər",
+            "sort_order": 9,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          }
+        ]
+      },
+      {
+        "stable_key": "TOWER_EQUIPMENT_ROOM_305",
+        "name": "Qüllə - Aparat otağı (305) üzrə yoxlama",
+        "sort_order": 29,
+        "active": true,
+        "service_name": "",
+        "object_name": "",
+        "items": [
+          {
+            "stable_key": "HALL_LIGHTING",
+            "name": "Zalın işıqlanması",
+            "equipment_name": "Zalın işıqlanması",
+            "sort_order": 0,
+            "required": true,
+            "active": true,
+            "technology_card": "-"
+          },
+          {
+            "stable_key": "TEMPERATURE_HUMIDITY",
+            "name": "Temperatur və nisbi rütubət",
+            "equipment_name": "Temperatur və nisbi rütubət",
+            "sort_order": 1,
+            "required": true,
+            "active": true,
+            "technology_card": "İ1"
+          },
+          {
+            "stable_key": "FIRE_EXTINGUISHER_6",
+            "name": "Yanğınsöndürən balon -6",
+            "equipment_name": "Yanğınsöndürən balon -6",
+            "sort_order": 2,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "EGL_INSPECTION",
+            "name": "EGL- nə ümumi baxış",
+            "equipment_name": "EGL- nə ümumi baxış",
+            "sort_order": 3,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "AIRCON_HP_SWITCH_1",
+            "name": "Switch -1 (HP) -Aircon",
+            "equipment_name": "Switch -1 (HP) -Aircon",
+            "sort_order": 4,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "AIRCON_HP_SWITCH_2",
+            "name": "Switch -2 (HP) -Aircon",
+            "equipment_name": "Switch -2 (HP) -Aircon",
+            "sort_order": 5,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "VCS_CISCO_SWITCH_1",
+            "name": "Switch -1 (Cisco) -VCS",
+            "equipment_name": "Switch -1 (Cisco) -VCS",
+            "sort_order": 6,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "VCS_CISCO_SWITCH_2",
+            "name": "Switch -2 (Cisco) -VCS",
+            "equipment_name": "Switch -2 (Cisco) -VCS",
+            "sort_order": 7,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "A_SMGCS_CISCO_SWITCH_1",
+            "name": "Switch -1 (Cisco) -A-SMGCS",
+            "equipment_name": "Switch -1 (Cisco) -A-SMGCS",
+            "sort_order": 8,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "A_SMGCS_CISCO_SWITCH_2",
+            "name": "Switch -2 (Cisco) -A-SMGCS",
+            "equipment_name": "Switch -2 (Cisco) -A-SMGCS",
+            "sort_order": 9,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CAMERA_ZYXEL_SWITCH",
+            "name": "Switch (ZyXel) - Kamera",
+            "equipment_name": "Switch (ZyXel) - Kamera",
+            "sort_order": 10,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "CAMERA_MEDIA_CONVERTER_1_2",
+            "name": "Mediakonvertor 1/2 - Kamera",
+            "equipment_name": "Mediakonvertor 1/2 - Kamera",
+            "sort_order": 11,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "AIRCON_NTP_1_GPS",
+            "name": "NTP Time Server Aircon 1+GPS antena",
+            "equipment_name": "NTP Time Server Aircon 1+GPS antena",
+            "sort_order": 12,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "AIRCON_NTP_2_GPS",
+            "name": "NTP Time Server Aircon 2+GPS antena",
+            "equipment_name": "NTP Time Server Aircon 2+GPS antena",
+            "sort_order": 13,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "A_SMGCS_NTP_GPS",
+            "name": "NTP Time Server A-SMGCS +GPS antena",
+            "equipment_name": "NTP Time Server A-SMGCS +GPS antena",
+            "sort_order": 14,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "MULTICOM_POE_ZABRAT",
+            "name": "Multicom PoE - Zabrat",
+            "equipment_name": "Multicom PoE - Zabrat",
+            "sort_order": 15,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "FANS",
+            "name": "ventilyatorlar",
+            "equipment_name": "ventilyatorlar",
+            "sort_order": 16,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "POWER_SUPPLIES",
+            "name": "qida mənbələri",
+            "equipment_name": "qida mənbələri",
+            "sort_order": 17,
+            "required": true,
+            "active": true,
+            "technology_card": "H1"
+          },
+          {
+            "stable_key": "FLIGHT_RADAR_RECEIVER",
+            "name": "flight radar qəbuledici",
+            "equipment_name": "flight radar qəbuledici",
+            "sort_order": 18,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "MOTOROLA_MTP_MTM_700_REC",
+            "name": "Rst. Motorola MTP-MTM-700 - REC",
+            "equipment_name": "Rst. Motorola MTP-MTM-700 - REC",
+            "sort_order": 19,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "ICOM_A110_131_7_RX_REC",
+            "name": "Rst. Icom IC A110 “131.7” - Rx-REC",
+            "equipment_name": "Rst. Icom IC A110 “131.7” - Rx-REC",
+            "sort_order": 20,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "ICOM_A110_124_0_RX_REC",
+            "name": "Rst. Icom IC A110 “124.0” - Rx-REC",
+            "equipment_name": "Rst. Icom IC A110 “124.0” - Rx-REC",
+            "sort_order": 21,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "ICOM_A110_126_8_RX_REC",
+            "name": "Rst. Icom IC-A110 “126.8” - Rx-REC",
+            "equipment_name": "Rst. Icom IC-A110 “126.8” - Rx-REC",
+            "sort_order": 22,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          },
+          {
+            "stable_key": "POLYOT_1_126_675_RX_REC",
+            "name": "Rst. Polyot-1 “126.675” - Rx-REC",
+            "equipment_name": "Rst. Polyot-1 “126.675” - Rx-REC",
+            "sort_order": 23,
+            "required": true,
+            "active": true,
+            "technology_card": "H1,İ1"
+          }
+        ]
+      }
+    ]
+  },
+  "based_on_version": "1.0",
+  "source_pages": [
+    "page-1.jpeg",
+    "page-5.jpeg",
+    "page-2.jpeg",
+    "page-3.jpeg",
+    "page-4.jpeg"
+  ]
+}

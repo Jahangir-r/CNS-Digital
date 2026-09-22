@@ -1,0 +1,197 @@
+{
+  "code": "CNS_DAILY_TECHNICAL_CHECK",
+  "version": "1.0",
+  "source_pages": [
+    "docs/page-1.jpeg",
+    "docs/page-5.jpeg",
+    "docs/page-2.jpeg",
+    "docs/page-3.jpeg",
+    "docs/page-4.jpeg"
+  ],
+  "headers": {
+    "service header": "U və RRTT Xidməti",
+    "object header": "HH AİS - Cənub",
+    "regulation": "TX-1",
+    "organization": "Bakıaeronaviqasiya"
+  },
+  "mapping_status": "unresolved: headers are reference only; all service_name/object_name remain empty",
+  "resolved_abbreviations": {
+    "MNG": {
+      "display_name": "ManageAir",
+      "manufacturer": "Indra",
+      "stable_key": "MANAGEAIR",
+      "structure_status": "review_only: handwritten occurrence does not add an item or determine its section"
+    }
+  },
+  "unresolved": [
+    {
+      "section_key": "DOCUMENT_HEADER",
+      "text": "Başlıqdakı kiçik abreviaturalar təsdiqlənməlidir."
+    }
+  ],
+  "handwritten_notes": [
+    {
+      "section_key": "DOCUMENT_HEADER",
+      "text": "Подпись, ФИО, дата, время",
+      "review": "ФИО и время unresolved; не включать в шаблон.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "OPERATIONS_HALL",
+      "text": "Yeni mon əlavə olunub",
+      "review": "Около NEC monitor; уточнить оборудование и постоянность изменения.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "SUP_APP",
+      "text": "SUP ACC … köçürülüb",
+      "review": "Обозначение и направление переноса unresolved.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "SUP_ACC",
+      "text": "MIL … köçürülüb; MNG quraş…; Garex quraş / TMCS …",
+      "review": "Часть текста и привязка unresolved.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "FIS_SAR",
+      "text": "Mini PC quraş…; MNG quraş…; Garex quraş…",
+      "review": "Подтвердить сокращения и состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "FDO",
+      "text": "Mini PC quraş…; MNG quraş…; Garex quraş…",
+      "review": "Подтвердить состав и привязку.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "FSD",
+      "text": "Mini PC quraş…; Garex quraş…",
+      "review": "Подтвердить состав и привязку.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "MIL",
+      "text": "Mini PC quraş…",
+      "review": "Подтвердить постоянность изменения.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS1_DEP_EXE",
+      "text": "SDD mon dəyiş / MNG quraş…; PC … / ELO çıx / Garex quraş…; Çıxarılıb",
+      "review": "Слово после PC и предмет удаления unresolved.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS1_DEP_PL",
+      "text": "Mini PC quraş…; SDD mon dəyiş / MNG quraş…; PC … / ELO çıx / Garex quraş…",
+      "review": "Сокращение после PC unresolved.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS2_ARR_EXE",
+      "text": "Çıxarılıb / … quraş…; Mon. korp çat var",
+      "review": "Название после / и конкретный монитор unresolved.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS2_ARR_PL",
+      "text": "Mini PC quraş…; Mon. korp çat var",
+      "review": "Уточнить монитор и состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS3_EAST_LOW_EXE",
+      "text": "Mon. korp çat var",
+      "review": "Уточнить монитор.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS3_EAST_LOW_PL",
+      "text": "Mini PC quraş…; Mon. korp. çat var",
+      "review": "Уточнить монитор и состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS4_EAST_UP_EXE",
+      "text": "Mon. korp. çat var",
+      "review": "Уточнить монитор.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS4_EAST_UP_PL",
+      "text": "Mini PC quraş…; Mon. korp çat var",
+      "review": "Уточнить монитор и состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS5_WEST_LOW_EXE",
+      "text": "Mon. korp çat var",
+      "review": "Уточнить монитор.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS5_WEST_LOW_PL",
+      "text": "Mini PC quraş…; Mon. korp çat var",
+      "review": "Уточнить монитор и состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS6_WEST_UP_EXE",
+      "text": "UCS 4-də quraşdırılıb",
+      "review": "Около Care; подтвердить привязку и перенос.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS6_WEST_UP_PL",
+      "text": "Mini PC quraş…; … quraş…; Mon. korp çat var",
+      "review": "Название второй строки unresolved.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS7_SOUTH_EXE",
+      "text": "SDD mon dəyiş / MNG quraş…; PC və ELO çıx / Garex quraş…; Çıxarılıb",
+      "review": "Уточнить предмет удаления и замены.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS7_SOUTH_PL",
+      "text": "Mini PC quraş…; SDD mon dəyiş / MNG quraş…; PC və ELO çıx / Garex quraş…",
+      "review": "Подтвердить состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS8_MIL_EXE",
+      "text": "SDD mon dəyiş / MNG quraş…; PC və ELO çıx / Garex quraş…; Çıxarılıb",
+      "review": "Уточнить предмет удаления.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "UCS8_BACKUP_PL",
+      "text": "Mini PC quraş…; SDD mon dəyiş / MNG quraş…; PC və ELO çıx / Garex quraş…",
+      "review": "Подтвердить состав.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "SUP_TWR",
+      "text": "Mini PC quraş…; MNG quraş…; Garex quraş…; Nasaz / PC çıxarılıb",
+      "review": "Последняя заметка около Apron PC; подтвердить привязку.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "GND1",
+      "text": "Nasaz. Monitor çıxarılıb; 1B PC çıxarılıb",
+      "review": "1B сомнительно; заметки около APRON и ATC-GV kamera.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    },
+    {
+      "section_key": "GND2",
+      "text": "MNG və Mini PC quraş…; 2B PC çıxarılıb; PC və ELO çıx / Garex quraş…; Nasaz",
+      "review": "2B сомнительно; уточнить привязку; Nasaz около APRON.",
+      "action": "Требует подтверждения; не применять к структуре v1.0."
+    }
+  ],
+  "execution_marks": "Handwritten + marks are historical answers, never seed defaults."
+}

@@ -1,0 +1,14 @@
+import express from 'express';
+const checklist=['view_checklists','create_checklists','edit_own_checklists','manage_checklists','manage_checklist_templates','manage_checklist_shifts','create_reports_from_checklist'];
+const base={name:'technician',label:'Texnik',view_all_reports:1,create_reports:0,edit_reports:0,delete_reports:0,export_import:0,manage_users:0,shift_engineer_access:0,reset_password:0,manage_roles:1,...Object.fromEntries(checklist.map((k,i)=>[k,i<4?1:0]))};
+let roles=[{...base},{...base,name:'engineer',label:'Mühəndis'},...Array.from({length:9},(_,n)=>({...base,name:`custom_${n+1}`,label:`Xüsusi rol ${n+1}`})),{...base,name:'admin',label:'Admin',...Object.fromEntries(checklist.map(k=>[k,1]))}],saves=0;
+const reports=Array.from({length:120},(_,n)=>({id:n+1,xidmet:'CES',obyekt:'Bakı',sistem:n===119?'OLDİ, AMHS':'System '+(n+1),nasazliq:'Test nasazlıq '+(n+1),nasazliq_vaxti:'2026-09-20 10:00',prioritet:'orta',sebeb:'Uzun səbəb mətni sözlər üzrə düzgün köçürülməlidir',tedbir:'Uzun tədbir mətni sözlər üzrə düzgün köçürülməlidir',berpa_vaxti:'',muraciet:n===119?'Süleymanov R.':'Operator',cavabdeh:n===119?'Asyanov R.':'Engineer',author:'Admin',can_edit:true,can_delete:true}));
+const users=Array.from({length:16},(_,n)=>({id:n+1,username:n?'user'+(n+1):'admin',full_name:n?`İstifadəçi ${n+1}`:'Admin',role:n%2?'technician':'engineer',role_label:n%2?'Texnik':'Mühəndis',active:n%5?1:0}));
+const app=express();app.use(express.json());
+app.get('/api/me',(_q,s)=>s.json({id:1,username:'admin',full_name:'Admin',role:'admin',role_label:'Admin',perms:{manage_roles:true,manage_users:true,reset_password:true,view_all_reports:true,...Object.fromEntries(checklist.map(k=>[k,true]))}}));
+app.get('/api/reports',(_q,s)=>s.json(reports));app.get('/api/roles',(_q,s)=>s.json(roles));app.get('/api/users',(_q,s)=>s.json(users));
+app.get('/api/checklists/context',(_q,s)=>s.json({current_shift:null,current_template:null,can_create:false,can_create_extra:false,can_manage:false,existing_run_id:null,existing_run_deleted:false,error:'Növbə cədvəli təyin edilməyib'}));app.get('/api/checklists',(_q,s)=>s.json({rows:[],page:1,page_size:12,total:0}));
+app.put('/api/roles/:name/permissions-batch',(q,s)=>{saves++;roles=roles.map(r=>r.name===q.params.name?{...r,...q.body.permissions}:r);s.json({ok:true});});
+app.get('/test-state',(_q,s)=>s.json({saves}));app.use(express.static('public'));
+const server=app.listen(0,'127.0.0.1',()=>console.log(JSON.stringify({port:(server.address() as any).port})));
+process.on('SIGTERM',()=>{server.closeAllConnections();server.close(()=>process.exit(0));});

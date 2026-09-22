@@ -1,0 +1,20 @@
+node_modules/
+
+# База данных (содержит хэши паролей и рабочие записи)
+data/
+
+# Служебные файлы
+dir.cookies
+*.log
+.env
+
+# Automatic journal backups and audit logs
+CNS-Jurnal-Backup/
+logs/
+
+# macOS metadata
+.DS_Store
+**/.DS_Store
+
+# Generated screenshots / temporary artifacts
+artifacts/

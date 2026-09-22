@@ -1,0 +1,27 @@
+// Browser acceptance uses only in-memory databases and an ephemeral listener.
+import express from 'express';
+import session from 'express-session';
+import Database from 'better-sqlite3';
+import {createAuthService} from '../../src/auth.js';
+import {migrateChecklistDatabase} from '../../src/checklists/migrations.js';
+import {createTemplateRouter} from '../../src/checklists/template-routes.js';
+import {createTemplateService} from '../../src/checklists/templates.js';
+import {importProductionTemplate} from '../../src/checklists/production-template.js';
+import {templateFixture} from './checklist-template.js';
+import {createRunRouter} from '../../src/checklists/run-routes.js';
+const db=new Database(':memory:'),journal=new Database(':memory:');db.pragma('foreign_keys=ON');migrateChecklistDatabase(db);
+journal.exec(`CREATE TABLE roles(name TEXT PRIMARY KEY,label TEXT,manage_checklist_templates INTEGER,manage_checklist_shifts INTEGER);
+INSERT INTO roles VALUES('admin','Admin',1,1),('observer','Müşahidəçi',0,0);
+CREATE TABLE users(id INTEGER PRIMARY KEY,username TEXT,full_name TEXT,role TEXT,active INTEGER DEFAULT 1,deleted INTEGER DEFAULT 0);
+INSERT INTO users(id,username,full_name,role) VALUES(1,'admin','Admin','admin'),(2,'observer','Observer','observer');`);
+importProductionTemplate(db,1);
+const templates=createTemplateService(db);const initial=templates.create({code:'TEST',name:'Daily'},1);templates.update(initial.id,{...templateFixture,revision:1});
+const auth=createAuthService(journal,'template-browser-test'),app=express();app.use(express.json());app.use(session({secret:'template-browser-test',resave:false,saveUninitialized:false}));
+app.get('/api/me',auth.requireAuth,(_q,s)=>s.json(auth.userPayload(s.locals.user)));
+app.get('/api/reports',auth.requireAuth,(_q,s)=>s.json([]));
+app.use('/api',createTemplateRouter({available:true,db},auth,{write(){}}));
+app.use('/api',createRunRouter({available:true,db},auth,{write(){}},()=>new Date('2026-09-20T00:00:00Z')));
+app.use('/api',(_q,s)=>s.status(404).json({error:'API endpoint tapılmadı'}));
+app.use(express.static('public'));app.use((e:any,_q:express.Request,s:express.Response,_n:express.NextFunction)=>s.status(500).json({error:e.message}));
+const server=app.listen(0,'127.0.0.1',()=>console.log(JSON.stringify({port:(server.address() as any).port,admin:auth.signAuthToken(1),observer:auth.signAuthToken(2)})));
+process.on('SIGTERM',()=>{server.closeAllConnections();server.close(()=>{db.close();journal.close();process.exit(0);});});
