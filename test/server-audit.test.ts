@@ -10,6 +10,8 @@ import ExcelJS from "exceljs";
 import Database from "better-sqlite3";
 import { localDate } from "../src/local-time.js";
 
+const TEST_ADMIN_PASSWORD = `test-admin-${process.pid}-${Date.now()}`;
+
 async function eventually<T>(read: () => Promise<T>, accept: (value: T) => boolean): Promise<T> {
   for (let i = 0; i < 150; i++) {
     try { const value = await read(); if (accept(value)) return value; } catch { /* retry file replacement / startup */ }
@@ -31,7 +33,7 @@ async function start(t: any, trustProxy = "", blocked = false) {
   await new Promise<void>(resolve => probe.close(() => resolve()));
   const child = spawn(process.execPath, [path.resolve("node_modules/tsx/dist/cli.mjs"), path.resolve("src/server.ts")], {
     cwd: root, // db.ts can only create/open data/jurnal.db inside this temporary directory.
-    env: { ...process.env, PORT: String(port), TRUST_PROXY: trustProxy, SESSION_SECRET: "isolated-test-secret" },
+    env: { ...process.env, PORT: String(port), TRUST_PROXY: trustProxy, SESSION_SECRET: "isolated-test-secret", CNS_BOOTSTRAP_ADMIN_PASSWORD: TEST_ADMIN_PASSWORD },
     stdio: ["ignore", "ignore", "ignore"],
   });
   const exited = once(child, "exit");
@@ -66,7 +68,7 @@ const report = { xidmet: "CES", obyekt: "Bakı", sistem: "ILS", nasazliq: "Test 
 test("isolated API: audit coverage, backups after mutations, export unchanged, secrets excluded and proxy spoofing ignored", async t => {
   const s = await start(t);
   assert.equal((await s.call("/api/login", "POST", { username: "admin", password: "NEVER_LOG_FAILED_PASSWORD" })).status, 401);
-  const login = await s.call("/api/login", "POST", { username: "admin", password: "admin123" });
+  const login = await s.call("/api/login", "POST", { username: "admin", password: TEST_ADMIN_PASSWORD });
   assert.equal(login.status, 200);
   const token = login.json.auth_token;
   s.token(token);
@@ -111,7 +113,7 @@ test("isolated API: audit coverage, backups after mutations, export unchanged, s
   const role = await s.call("/api/roles", "POST", { label: "Test role", permissions: { view_all_reports: true } });
   assert.equal(role.status, 201);
   assert.equal((await s.call(`/api/roles/${role.json.name}/permissions`, "PUT", { permission: "create_reports", enabled: true })).status, 200);
-  assert.equal((await s.call("/api/change-password", "POST", { oldPassword: "admin123", newPassword: "NEVER_LOG_NEW_PASSWORD" })).status, 200);
+  assert.equal((await s.call("/api/change-password", "POST", { oldPassword: TEST_ADMIN_PASSWORD, newPassword: "NEVER_LOG_NEW_PASSWORD" })).status, 200);
   assert.equal((await s.call("/api/reports", "DELETE")).status, 200);
   await eventually(readSheet, sheet => sheet.rowCount === 1);
   // Force a genuine SQLite error only in this isolated fixture.
@@ -127,7 +129,7 @@ test("isolated API: audit coverage, backups after mutations, export unchanged, s
   }
   assert.ok(log.includes(`report_id="${id}"`) && log.includes(`user_id="${uid}"`) && log.includes(`role_id="${role.json.name}"`));
   assert.ok(!log.includes("203.0.113.25"));
-  assert.ok(!log.includes("NEVER_LOG") && !log.includes(token) && !log.includes("admin123") && !log.includes("isolated-test-secret"));
+  assert.ok(!log.includes("NEVER_LOG") && !log.includes(token) && !log.includes(TEST_ADMIN_PASSWORD) && !log.includes("isolated-test-secret"));
 });
 
 test("explicit trusted proxy enables forwarded IP", async t => {
@@ -139,7 +141,7 @@ test("explicit trusted proxy enables forwarded IP", async t => {
 
 test("API mutations succeed with both backup directory and logs unavailable", async t => {
   const s = await start(t, "", true);
-  const login = await s.call("/api/login", "POST", { username: "admin", password: "admin123" });
+  const login = await s.call("/api/login", "POST", { username: "admin", password: TEST_ADMIN_PASSWORD });
   s.token(login.json.auth_token);
   const created = await s.call("/api/reports", "POST", report);
   assert.equal(created.status, 200);

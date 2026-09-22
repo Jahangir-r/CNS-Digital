@@ -192,6 +192,19 @@ if (oldDirector && !adminTaken) {
   db.prepare("UPDATE users SET username='admin', full_name='Admin', role='admin' WHERE id=?").run(oldDirector.id);
 }
 
+// Explicit first-run bootstrap.
+// No default administrator password is stored in the application.
+// This path is used only when CNS_BOOTSTRAP_ADMIN_PASSWORD is explicitly supplied.
+const bootstrapAdminPassword = process.env.CNS_BOOTSTRAP_ADMIN_PASSWORD?.trim();
+const bootstrapUserCount = db.prepare("SELECT COUNT(*) AS n FROM users").get() as { n: number };
+
+if (bootstrapUserCount.n === 0 && bootstrapAdminPassword) {
+  db.prepare(
+    "INSERT INTO users (username,password_hash,full_name,role) VALUES (?,?,?,'admin')"
+  ).run("admin", bcrypt.hashSync(bootstrapAdminPassword, 10), "Admin");
+  console.log("Initial administrator created from explicit bootstrap configuration");
+}
+
 export interface User {
   id: number;
   username: string;
@@ -244,13 +257,4 @@ export interface Report {
 
 export function getRole(name: string): Role | undefined {
   return db.prepare("SELECT * FROM roles WHERE name=?").get(name) as Role | undefined;
-}
-
-// First launch only.
-const hasUsers = db.prepare("SELECT COUNT(*) AS n FROM users").get() as { n: number };
-if (hasUsers.n === 0) {
-  db.prepare(
-    "INSERT INTO users (username,password_hash,full_name,role) VALUES (?,?,?,'admin')"
-  ).run("admin", bcrypt.hashSync("admin123", 10), "Admin");
-  console.log("Admin yaradıldı: admin / admin123 — parolu dəyişin");
 }

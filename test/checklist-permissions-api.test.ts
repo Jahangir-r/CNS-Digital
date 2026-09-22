@@ -10,13 +10,15 @@ import Database from "better-sqlite3";
 import { CHECKLIST_PERMISSIONS } from "../src/checklists/permissions.js";
 import { localDate } from "../src/local-time.js";
 
+const TEST_ADMIN_PASSWORD = `test-admin-${process.pid}-${Date.now()}`;
+
 async function boot(root: string, attempt = 1): Promise<any> {
   const probe = net.createServer();
   probe.listen(0, "127.0.0.1"); await once(probe, "listening");
   const port = (probe.address() as net.AddressInfo).port;
   await new Promise<void>(resolve => probe.close(() => resolve()));
   const child = spawn(process.execPath, [path.resolve("node_modules/tsx/dist/cli.mjs"), path.resolve("src/server.ts")], {
-    cwd: root, env: { ...process.env, PORT: String(port), TRUST_PROXY: "", SESSION_SECRET: "stage1-test-only" }, stdio: "ignore",
+    cwd: root, env: { ...process.env, PORT: String(port), TRUST_PROXY: "", SESSION_SECRET: "stage1-test-only", CNS_BOOTSTRAP_ADMIN_PASSWORD: TEST_ADMIN_PASSWORD }, stdio: "ignore",
   });
   const exited = once(child, "exit");
   const base = `http://127.0.0.1:${port}`;
@@ -50,7 +52,7 @@ test("API permissions, role editing, no manual report privilege, and persistence
   let server: Awaited<ReturnType<typeof boot>> | undefined;
   t.after(async () => { await server?.stop(); await fs.rm(root, { recursive: true, force: true }); });
   server = await boot(root);
-  const login = await server.call("/api/login", "POST", { username: "admin", password: "admin123" });
+  const login = await server.call("/api/login", "POST", { username: "admin", password: TEST_ADMIN_PASSWORD });
   assert.equal(login.status, 200);
   let admin = login.body.auth_token;
   const me = await server.call("/api/me", "GET", undefined, admin);
@@ -98,7 +100,7 @@ test("API permissions, role editing, no manual report privilege, and persistence
   assert.equal((db.prepare("SELECT COUNT(*) n FROM report_creation_requests").get() as any).n,0);
   db.close();
   server = await boot(root);
-  admin = (await server.call("/api/login", "POST", { username: "admin", password: "admin123" })).body.auth_token;
+  admin = (await server.call("/api/login", "POST", { username: "admin", password: TEST_ADMIN_PASSWORD })).body.auth_token;
   assert.deepEqual((await server.call("/api/roles", "GET", undefined, admin)).body, before);
   const after = new Database(path.join(root, "data/jurnal.db"), { readonly: true });
   assert.deepEqual(after.prepare("SELECT * FROM users ORDER BY id").all(), users);
@@ -114,7 +116,7 @@ test("unavailable checklist storage does not prevent login, journal writes or jo
   await fs.mkdir(path.join(root, "data/checklist.db"), { recursive: true }); // path is a directory, not a DB
   const server = await boot(root);
   t.after(async () => { await server.stop(); await fs.rm(root, { recursive: true, force: true }); });
-  const login = await server.call("/api/login", "POST", { username: "admin", password: "admin123" });
+  const login = await server.call("/api/login", "POST", { username: "admin", password: TEST_ADMIN_PASSWORD });
   assert.equal(login.status, 200);
   const created = await server.call("/api/reports", "POST", { xidmet: "CES", sistem: "ILS", nasazliq: "Storage failure test", nasazliq_vaxti: "2026-09-20T10:00" }, login.body.auth_token);
   assert.equal(created.status, 200);
