@@ -1,6 +1,6 @@
 {
-  "name": "cns-jurnal",
-  "version": "1.0.0",
+  "name": "cns-digital",
+  "version": "1.0.2",
   "description": "CNS Digital — единая локальная система журнала, технических checklist, пользователей, ролей, backup и audit",
   "type": "module",
   "scripts": {
