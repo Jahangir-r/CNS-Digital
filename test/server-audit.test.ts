@@ -24,7 +24,7 @@ async function start(t: any, trustProxy = "", blocked = false) {
   const root = await fs.mkdtemp(path.join(os.tmpdir(), "cns-api-test-"));
   if (blocked) {
     await fs.writeFile(path.join(root, "logs"), "blocked");
-    await fs.writeFile(path.join(root, "CNS-Jurnal-Backup"), "blocked");
+    await fs.writeFile(path.join(root, "CNS-Digital-Backup"), "blocked");
   }
   const probe = net.createServer();
   probe.listen(0, "127.0.0.1");
@@ -58,7 +58,7 @@ async function start(t: any, trustProxy = "", blocked = false) {
     const json = await response.json();
     return { status: response.status, json };
   }
-  const logFile = path.join(root, "logs", `CNS-Jurnal-${localDate()}.log`);
+  const logFile = path.join(root, "logs", `CNS-Digital-Audit-${localDate()}.log`);
   const readLog = () => fs.readFile(logFile, "utf8");
   return { root, base, call, readLog, stop, token: (value: string) => { token = value; } };
 }
@@ -75,7 +75,7 @@ test("isolated API: audit coverage, backups after mutations, export unchanged, s
   const created = await s.call("/api/reports", "POST", report);
   assert.equal(created.status, 200);
   const id = created.json.id;
-  const excelFile = path.join(s.root, "CNS-Jurnal-Backup/Excel", `CNS-Jurnal-${localDate()}.xlsx`);
+  const excelFile = path.join(s.root, "CNS-Digital-Backup/Excel", `CNS-Digital-Journal-${localDate()}.xlsx`);
   const readSheet = async () => {
     const book = new ExcelJS.Workbook(); await book.xlsx.readFile(excelFile); return book.worksheets[0];
   };

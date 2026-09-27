@@ -63,7 +63,7 @@ export function createRunService(db:Database.Database,now:()=>Date=()=>new Date(
   if(!extra&&b.override_reason!==undefined)invalid();
   const instant=now(),p=shifts.resolveCurrentShift(instant);
   const checklistDay=localParts(instant,'Asia/Baku').date;
-  if(!extra){const existing=db.prepare('SELECT * FROM checklist_runs WHERE checklist_day=? AND is_extra=0 AND deleted_at IS NULL').get(checklistDay) as RunRow|undefined;
+  if(!extra){const existing=db.prepare('SELECT * FROM checklist_runs WHERE shift_period_id=? AND is_extra=0 AND deleted_at IS NULL').get(p.id) as RunRow|undefined;
    if(existing)return {outcome:'existing' as const,run:existing.deleted_at?{...existing,sections:[],can_edit:false}:read(existing.id,actor)};}
   const v=templates.get(currentTemplate().id),id=randomUUID(),timestamp=instant.toISOString(),local=localParts(instant,p.timezone_snapshot);
   db.prepare(`INSERT INTO checklist_runs(id,user_id,username_snapshot,employee_name_snapshot,template_id,template_version_id,template_version_snapshot,template_content_hash,
@@ -83,10 +83,10 @@ export function createRunService(db:Database.Database,now:()=>Date=()=>new Date(
  });
  const context=db.transaction((actor:RunActor)=>{
   if(!actor.view_checklists)throw new ChecklistError(403,'İcazə yoxdur');
-  let error:string|null=null,shift:ReturnType<typeof shifts.current>|null=null,template:ReturnType<typeof currentTemplate>|null=null,existing:RunRow|undefined;
-  try {shift=shifts.current(now());}catch(e){if(!(e instanceof ChecklistError))throw e;error=e.message;}
-  if(shift)existing=db.prepare(`SELECT * FROM checklist_runs WHERE checklist_day=? AND is_extra=0 AND deleted_at IS NULL`)
-   .get(localParts(now(),'Asia/Baku').date) as RunRow|undefined;
+  let error:string|null=null,shift:ReturnType<typeof shifts.resolveCurrentShift>|null=null,template:ReturnType<typeof currentTemplate>|null=null,existing:RunRow|undefined;
+  try {shift=shifts.resolveCurrentShift(now());}catch(e){if(!(e instanceof ChecklistError))throw e;error=e.message;}
+  if(shift)existing=db.prepare(`SELECT * FROM checklist_runs WHERE shift_period_id=? AND is_extra=0 AND deleted_at IS NULL`)
+   .get(shift.id) as RunRow|undefined;
   try{template=currentTemplate();}catch(e){if(!(e instanceof ChecklistError))throw e;error??=e.message;}
   const editable=existing?canEditChecklistRun(existing,actor,now()):false;
   return {current_shift:shift,work_date:shift?.work_date??null,current_template:template,can_create:actor.create_checklists&&!!shift&&!!template&&!existing,can_create_extra:actor.manage_checklists&&!!shift&&!!template,can_manage:actor.manage_checklists,

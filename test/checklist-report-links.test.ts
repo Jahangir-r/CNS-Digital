@@ -44,7 +44,7 @@ test('API acceptance: snapshot autofill, retries, relation GET, permission separ
  assert.equal((e.journal.prepare('SELECT COUNT(*) n FROM report_creation_requests').get() as any).n,1);
  assert.equal((e.journal.prepare('SELECT COUNT(*) n FROM reports').get() as any).n,1,'only manual report remains');
  assert.ok(!JSON.stringify(e.audit).includes('SECRET_PROBLEM'));assert.ok(e.audit.some(a=>a.event==='REPORT_CREATE_FROM_CHECKLIST'&&a.operation_id));assert.ok(e.audit.some(a=>a.event==='REPORT_CREATE'));
- await e.backup.flush();assert.ok(e.backupCalls()>=1);assert.ok((await fs.stat(path.join(e.root,'Backup','Excel',`CNS-Jurnal-${localDate()}.xlsx`))).size>0);
+ await e.backup.flush();assert.ok(e.backupCalls()>=1);assert.ok((await fs.stat(path.join(e.root,'Backup','Excel',`CNS-Digital-Journal-${localDate()}.xlsx`))).size>0);
 });
 test('missing fields, invalid results, foreign IDs, expiry, Engineer and historical Admin',async t=>{
  const e=await fixture(t,true);const missing=await e.call();assert.equal(missing.status,422);assert.deepEqual(missing.body.missing_fields,[{key:'xidmet',label:'Xidmət'}]);

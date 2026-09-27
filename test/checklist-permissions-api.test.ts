@@ -107,7 +107,7 @@ test("API permissions, role editing, no manual report privilege, and persistence
   after.close();
   const checklist = new Database(path.join(root, "data/checklist.db"), { readonly: true });
   assert.deepEqual(checklist.prepare("SELECT name FROM sqlite_master WHERE type='table'").all(), ["checklist_schema_migrations", "checklist_templates", "checklist_template_versions", "checklist_sections", "checklist_items", "checklist_shift_schedule_versions", "checklist_shift_rules", "checklist_shift_periods", "checklist_runs", "checklist_run_sections", "checklist_run_items", "checklist_report_links", "checklist_shift_current"].map(name => ({ name })));
-  assert.equal((checklist.prepare("SELECT COUNT(*) AS n FROM checklist_schema_migrations").get() as any).n, 8);
+  assert.equal((checklist.prepare("SELECT COUNT(*) AS n FROM checklist_schema_migrations").get() as any).n, 9);
   checklist.close();
 });
 
@@ -122,8 +122,8 @@ test("unavailable checklist storage does not prevent login, journal writes or jo
   assert.equal(created.status, 200);
   assert.equal((await server.call("/api/reports", "GET", undefined, login.body.auth_token)).body.length, 1);
   await server.stop();
-  const log = await fs.readFile(path.join(root, "logs", `CNS-Jurnal-${localDate()}.log`), "utf8");
+  const log = await fs.readFile(path.join(root, "logs", `CNS-Digital-Audit-${localDate()}.log`), "utf8");
   assert.ok(log.includes('[CHECKLIST_STORAGE_ERROR] module="CHECKLIST"'));
   assert.ok(log.includes("[REPORT_CREATE]"));
-  assert.ok((await fs.readdir(path.join(root, "CNS-Jurnal-Backup/Excel"))).some(name => name.endsWith(".xlsx")));
+  assert.ok((await fs.readdir(path.join(root, "CNS-Digital-Backup/Excel"))).some(name => name.endsWith(".xlsx")));
 });

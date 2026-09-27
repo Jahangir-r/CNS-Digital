@@ -11,13 +11,15 @@ export const REPORT_FIELDS = [
   "cavabdeh",
   "prioritet",
 ] as const;
+export type NormalizedReport = Record<(typeof REPORT_FIELDS)[number], string>;
 export const PRIORITY_LABELS: Record<string, string> = { asagi: "Aşağı", orta: "Orta", yuksek: "Yüksək" };
 export function normalizePriority(v: string): string {
-  const s = (v || "").trim().toLowerCase();
-  if (["asagi", "orta", "yuksek"].includes(s)) return s;
-  if (s.includes("aşa") || s.includes("asa")) return "asagi";
-  if (s.includes("yüks") || s.includes("yuks")) return "yuksek";
-  return "orta";
+  const candidate = String(v ?? "").trim().toLocaleLowerCase("az-AZ");
+  const canonical = new Set(["asagi", "orta", "yuksek"]);
+  if (canonical.has(candidate)) return candidate;
+  const folded = candidate.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/ə/g, "e");
+  if (folded.includes("asa")) return "asagi";
+  return folded.includes("yuks") ? "yuksek" : "orta";
 }
 
 // Normalizes historical person names without losing meaningful free-text notes.
@@ -162,12 +164,12 @@ export function personMatches(accountName: string, reportName: string): boolean 
   return !!a && !!b && a.surname === b.surname && a.initial === b.initial;
 }
 
-export function pickReport(body: Record<string, unknown>) {
-  const out: Record<string, string> = {};
-  for (const f of REPORT_FIELDS) out[f] = String(body[f] ?? "").trim();
-  out.prioritet = normalizePriority(out.prioritet);
-  out.muraciet = normalizePersonText(out.muraciet, false);
-  out.cavabdeh = normalizePersonText(out.cavabdeh, true);
-  return out;
+export function pickReport(body: Record<string, unknown>): NormalizedReport {
+  const values = Object.fromEntries(REPORT_FIELDS.map(field => [field, String(body[field] ?? "").trim()])) as NormalizedReport;
+  return {
+    ...values,
+    prioritet: normalizePriority(values.prioritet),
+    muraciet: normalizePersonText(values.muraciet),
+    cavabdeh: normalizePersonText(values.cavabdeh, true),
+  } as NormalizedReport;
 }
-

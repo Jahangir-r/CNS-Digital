@@ -55,7 +55,7 @@ export class AuditLog {
         .map(key => `${key}=${quote(data[key]!)}`).join(" ")} result=${entry.result === "SUCCESS" ? "SUCCESS" : "ERROR"}\n`;
       this.queue = this.queue.then(async () => {
         await fs.mkdir(this.directory, { recursive: true });
-        await fs.appendFile(path.join(this.directory, `CNS-Jurnal-${day}.log`), line, { mode: 0o600 });
+        await fs.appendFile(path.join(this.directory, `CNS-Digital-Audit-${day}.log`), line, { mode: 0o600 });
         if (this.cleanedDay !== day) {
           await this.cleanup(date);
           this.cleanedDay = day;
@@ -71,7 +71,7 @@ export class AuditLog {
     const cutoff = new Date(date.getFullYear(), date.getMonth(), date.getDate() - 45);
     const oldest = localDate(cutoff);
     for (const entry of await fs.readdir(this.directory, { withFileTypes: true })) {
-      const match = /^CNS-Jurnal-(\d{4}-\d{2}-\d{2})\.log$/.exec(entry.name);
+      const match = /^CNS-Digital-Audit-(\d{4}-\d{2}-\d{2})\.log$/.exec(entry.name);
       if (entry.isFile() && match && match[1] < oldest) {
         await fs.unlink(path.join(this.directory, entry.name));
       }

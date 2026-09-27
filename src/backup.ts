@@ -39,7 +39,7 @@ export class BackupManager {
   private async excel(actor: Actor): Promise<void> {
     const date = this.now();
     const day = localDate(date);
-    const file = `CNS-Jurnal-${day}.xlsx`;
+    const file = `CNS-Digital-Journal-${day}.xlsx`;
     const folder = path.join(this.directory, "Excel");
     const temporary = path.join(folder, `.${file}.${randomUUID()}.tmp`);
     try {

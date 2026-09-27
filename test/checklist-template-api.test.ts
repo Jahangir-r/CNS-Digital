@@ -88,7 +88,7 @@ test("template API acceptance, conflict codes, permission-only access, archive a
   journal.exec("UPDATE roles SET manage_checklist_templates=0 WHERE name='custom_manager'");
   assert.equal((await call('/api/checklist-templates','POST',{code:'AFTER',name:'After revoked'})).status,403);
   await audit.flush();
-  const log=await fs.readFile(path.join(root,'logs',`CNS-Jurnal-${localDate()}.log`),'utf8');
+  const log=await fs.readFile(path.join(root,'logs',`CNS-Digital-Audit-${localDate()}.log`),'utf8');
   for(const event of ['CREATE','CLONE','UPDATE','PUBLISH','ARCHIVE','MAKE_CURRENT']) assert.ok(log.includes(`[CHECKLIST_TEMPLATE_${event}]`));
   assert.ok(log.includes('module="CHECKLIST"'));assert.ok(log.includes(`template_id="${tid}"`));
   assert.ok(log.includes('template_version="1.0"'));assert.ok(log.includes('revision="3"'));assert.ok(log.includes('changed_fields='));

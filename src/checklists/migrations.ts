@@ -10,7 +10,7 @@ export function migrateChecklistDatabase(db: Database.Database): void {
       version INTEGER PRIMARY KEY, name TEXT NOT NULL, applied_at TEXT NOT NULL
     )`);
     const versions = db.prepare("SELECT version FROM checklist_schema_migrations").all() as { version: number }[];
-    if (versions.some(row => ![1, 2, 3, 4, 5, 6, 7, 8].includes(row.version))) throw new Error("Unsupported checklist schema version");
+    if (versions.some(row => ![1, 2, 3, 4, 5, 6, 7, 8, 9].includes(row.version))) throw new Error("Unsupported checklist schema version");
     if (!versions.length) db.prepare("INSERT INTO checklist_schema_migrations VALUES (1,?,?)")
       .run("initialize_checklist_storage", new Date().toISOString());
     if (!versions.some(row => row.version === 2)) {
@@ -80,6 +80,16 @@ export function migrateChecklistDatabase(db: Database.Database): void {
       `);
       db.prepare("INSERT INTO checklist_schema_migrations VALUES (8,?,?)")
         .run("archive_checklist_history_after_31_calendar_days", new Date().toISOString());
+    }
+    if (!versions.some(row => row.version === 9)) {
+      db.exec(`
+        DROP INDEX IF EXISTS checklist_run_active_normal_day;
+        CREATE UNIQUE INDEX checklist_run_active_normal_shift_period
+          ON checklist_runs(shift_period_id)
+          WHERE is_extra=0 AND deleted_at IS NULL;
+      `);
+      db.prepare("INSERT INTO checklist_schema_migrations VALUES (9,?,?)")
+        .run("ordinary_checklist_slot_per_shift_period", new Date().toISOString());
     }
   }).immediate();
 }

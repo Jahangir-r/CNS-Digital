@@ -114,6 +114,22 @@ test('missing config, duplicate, spoofing, extra, deleted slot and edit permissi
  assert.equal(runs.list(owner,{}).total,2);assert.equal((db.prepare('SELECT COUNT(*) n FROM checklist_runs WHERE is_extra=0 AND deleted_at IS NULL').get() as any).n,1);
 });
 
+test('one active normal checklist per shift period across same-day and midnight boundaries',t=>{
+ const {runs,seed,set}=setup(t);seed();
+ set('2026-09-20T22:00:00.000Z');
+ const afterMidnight=runs.create(owner,{});assert.equal(afterMidnight.outcome,'created');
+ set('2026-09-20T19:30:00.000Z');
+ const beforeMidnight=runs.create({...owner,id:9,username:'other'},{});assert.equal(beforeMidnight.outcome,'existing');
+ assert.equal(beforeMidnight.run.id,afterMidnight.run.id,'23:30 and 02:00 share one ordinary slot');
+ assert.equal(runs.context(owner).can_create,false);
+ set('2026-09-21T04:00:00.000Z');
+ assert.equal(runs.context(owner).can_create,true,'08:00 opens the next shift slot on the same local date');
+ const dayShift=runs.create(owner,{});assert.equal(dayShift.outcome,'created');
+ assert.notEqual(dayShift.run.id,afterMidnight.run.id);
+ assert.notEqual(dayShift.run.shift_period_id,afterMidnight.run.shift_period_id);
+ assert.equal(dayShift.run.local_date,afterMidnight.run.local_date);
+});
+
 test('schedule activation cannot split an existing shift and no fallback after archive',t=>{
  const {shifts,seed,set}=setup(t);seed();set('2026-09-19T05:00:00Z');
  const middle=shifts.create({...scheduleFixture,effective_from:'2026-09-19T06:00:00.000Z',cycle_anchor:'2026-09-19T06:00:00.000Z'},1);assert.throws(()=>shifts.publish(middle.id,1,1),fails(422));

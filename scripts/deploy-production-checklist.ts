@@ -10,7 +10,7 @@ import {ChecklistBackup} from '../src/checklists/backup.js';
 import {BackupManager} from '../src/backup.js';
 
 const root=process.cwd(),data=path.join(root,'data'),stamp=new Date().toISOString().replace(/[:.]/g,'-');
-const pre=path.join(root,'CNS-Jurnal-Backup','Pre-Deployment',stamp);fs.mkdirSync(pre,{recursive:true});
+const pre=path.join(root,'CNS-Digital-Backup','Pre-Deployment',stamp);fs.mkdirSync(pre,{recursive:true});
 async function snapshot(name:string){const source=path.join(data,name);if(!fs.existsSync(source))return null;const target=path.join(pre,name);const sourceDb=new Database(source,{readonly:true});try{await sourceDb.backup(target);const copy=new Database(target,{readonly:true});try{if(copy.pragma('quick_check',{simple:true})!=='ok')throw Error(`${name} backup integrity failed`);}finally{copy.close();}}finally{sourceDb.close();}return target;}
 const journalBackup=await snapshot('jurnal.db'),checklistBackup=await snapshot('checklist.db');
 
@@ -34,7 +34,7 @@ try{
  schedule=shifts.get(schedule.id);
  if(rolesBefore!==JSON.stringify(journal.prepare('SELECT id,name FROM roles ORDER BY id').all()))throw Error('Role identities changed during deployment');
 
- const checklistBackups=new ChecklistBackup(checklist,path.join(root,'CNS-Jurnal-Backup','Checklist'),()=>{});checklistBackups.request();await checklistBackups.flush();
- const reportBackups=new BackupManager(journal,path.join(root,'CNS-Jurnal-Backup'),()=>{});await reportBackups.checkDaily();await reportBackups.stop();
+ const checklistBackups=new ChecklistBackup(checklist,path.join(root,'CNS-Digital-Backup','Checklist'),()=>{});checklistBackups.request();await checklistBackups.flush();
+ const reportBackups=new BackupManager(journal,path.join(root,'CNS-Digital-Backup'),()=>{});await reportBackups.checkDaily();await reportBackups.stop();
  console.log(JSON.stringify({preDeployment:{jurnal:journalBackup,checklist:checklistBackup},migrations:checklist.prepare('SELECT * FROM checklist_schema_migrations ORDER BY version').all(),template:{id:version.template_id,version_id:version.id,status:version.status,version:version.version_label,sections:version.sections.length,items:version.sections.flatMap(s=>s.items).length},schedule:{id:schedule.id,version:schedule.version,status:schedule.status,timezone:schedule.timezone,effective_from:schedule.effective_from,rules:schedule.rules},rolesChanged:false},null,2));
 }finally{checklist.close();journal.close();}

@@ -9,7 +9,7 @@ dir.cookies
 .env
 
 # Automatic journal backups and audit logs
-CNS-Jurnal-Backup/
+CNS-Digital-Backup/
 logs/
 
 # macOS metadata

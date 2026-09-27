@@ -6,7 +6,7 @@ import {createShiftService,localParts,wallTime,addDays} from '../src/checklists/
 import {productionShiftDraft,PRODUCTION_TIMEZONE} from '../src/checklists/production-shift.js';
 import {ChecklistBackup} from '../src/checklists/backup.js';
 
-const root=process.cwd(),source=path.join(root,'data','checklist.db'),stamp=new Date().toISOString().replace(/[:.]/g,'-'),folder=path.join(root,'CNS-Jurnal-Backup','Pre-Deployment',stamp);fs.mkdirSync(folder,{recursive:true});
+const root=process.cwd(),source=path.join(root,'data','checklist.db'),stamp=new Date().toISOString().replace(/[:.]/g,'-'),folder=path.join(root,'CNS-Digital-Backup','Pre-Deployment',stamp);fs.mkdirSync(folder,{recursive:true});
 const pre=path.join(folder,'checklist.db'),readonly=new Database(source,{readonly:true});
 const preQuick=(readonly.pragma('quick_check') as {quick_check:string}[]).map(r=>r.quick_check);
 const beforeRuns=readonly.prepare('SELECT COUNT(*) count,COALESCE(SUM(revision),0) revisions FROM checklist_runs').get();
@@ -23,6 +23,6 @@ try{
  const afterTemplate=db.prepare("SELECT v.id,v.status,v.content_hash,(SELECT COUNT(*) FROM checklist_sections s WHERE s.template_version_id=v.id) sections,(SELECT COUNT(*) FROM checklist_items i JOIN checklist_sections s ON s.id=i.section_id WHERE s.template_version_id=v.id) items FROM checklist_template_versions v JOIN checklist_templates t ON t.id=v.template_id WHERE t.code='CNS_DAILY_TECHNICAL_CHECK' AND v.version_label='1.0'").get();
  if(JSON.stringify(beforeRuns)!==JSON.stringify(afterRuns))throw Error('Historical checklist runs changed');
  if(JSON.stringify(beforeTemplate)!==JSON.stringify(afterTemplate))throw Error('Production template changed');
- const backup=new ChecklistBackup(db,path.join(root,'CNS-Jurnal-Backup','Checklist'),()=>{});backup.request();await backup.flush();
+ const backup=new ChecklistBackup(db,path.join(root,'CNS-Digital-Backup','Checklist'),()=>{});backup.request();await backup.flush();
  console.log(JSON.stringify({preDeployment:pre,quickCheck:{before:preQuick,after:postQuick},runs:{before:beforeRuns,after:afterRuns},template:{before:beforeTemplate,after:afterTemplate},archived:{id:result.archived.id,version:result.archived.version,status:result.archived.status},draft:{id:result.draft.id,version:result.draft.version,status:result.draft.status,timezone:result.draft.timezone,effective_from:result.draft.effective_from,rules:result.draft.rules},currentPublished:null},null,2));
 }finally{db.close();}
